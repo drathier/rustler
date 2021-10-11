@@ -23,6 +23,10 @@ defmodule Rustler.Compiler do
         |> make_build_mode_flag(config.mode)
         |> make_platform_hacks(crate_full_path, :os.type())
 
+      IO.inspect({"config", config})
+      IO.inspect({"cmd", cmd})
+      IO.inspect({"args", args})
+
       compile_result =
         System.cmd(cmd, args,
           cd: crate_full_path,
