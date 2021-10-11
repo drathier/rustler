@@ -33,7 +33,9 @@ defmodule Rustler.Compiler do
 
       case compile_result do
         {_, 0} -> :ok
-        {_, code} -> raise "Rust NIF compile error (rustc exit code #{code})"
+        {asd, code} -> 
+          IO.inspect(asd) 
+          raise "Rust NIF compile error (rustc exit code #{code}) #{inspect asd}"
       end
 
       handle_artifacts(crate_full_path, config)
